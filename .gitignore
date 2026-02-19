@@ -1,0 +1,25 @@
+# python
+__pycache__/
+*.pyc
+*.pyo
+
+# cache & outputs
+cache/
+output/
+*.log
+
+# weights
+weights/
+*.pt
+*.pth
+*.ckpt
+
+# large files
+*.zip
+
+# vscode
+.vscode/
+.idea/
+
+# system
+.DS_Store
