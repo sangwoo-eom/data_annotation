@@ -8,7 +8,7 @@ import pipeline.common as C
 def main():
     C.set_output_root("output_seg")
 
-    model = YOLO(str(C.BASE_DIR / "weights" / "yolo26l-seg.pt"))
+    model = YOLO("yolo26l-seg.pt")
 
     img_paths = list(C.INPUT_DIR.glob("*.jpg"))
     img_count = len(img_paths)
@@ -24,16 +24,17 @@ def main():
         if img is None:
             continue
 
-        results = model(img, verbose=False)[0]
+        results = model(img, verbose=False, retina_masks=True)[0]
+
         if results.masks is None:
             continue
 
-        masks = results.masks.data.cpu().numpy()  # (N, Hm, Wm)
+        masks = results.masks.data.cpu().numpy()
 
         for i, mask in enumerate(masks):
-            mask = (mask * 255).astype("uint8")
 
-            # mask 해상도 → 원본 해상도로 복원
+            mask = (mask > 0.5).astype("uint8") * 255
+
             mask = cv2.resize(
                 mask,
                 (img.shape[1], img.shape[0]),
