@@ -1,0 +1,61 @@
+# =========================
+# Dataset / generated data
+# =========================
+
+create/input/
+create/output_1/
+create/output_2/
+create/dataset/
+create/training/
+
+images/original/
+images/yolo_seg_results/
+images/edited_results/
+
+output/
+
+runs/
+
+# =========================
+# RealSense bag files
+# =========================
+
+*.bag
+bag_*/
+
+
+# =========================
+# Model weights
+# =========================
+
+*.pt
+*.pth
+weights/
+
+
+# =========================
+# Large files
+# =========================
+
+*.png
+*.jpg
+*.jpeg
+*.bmp
+*.txt
+
+
+# =========================
+# Python cache
+# =========================
+
+__pycache__/
+*.pyc
+*.pyo
+
+
+# =========================
+# Editor
+# =========================
+
+.vscode/
+.idea/
